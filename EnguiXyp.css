@@ -1,0 +1,110 @@
+.enguiXyp {
+  background: rgb(255, 248, 232);
+  border-radius: 5px;
+  box-sizing: border-box;
+  width: 500px;
+  padding: 20px;
+  position: relative;
+}
+.enguiXyp button {
+  cursor: pointer;
+  background: #ff9a36;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 3px;
+  padding: 6px 16px;
+  margin: 4px 0;
+}
+.enguiXyp button:hover {
+  background: #ffa954;
+}
+.enguiXyp input[type=text], select {
+  width: 100%;
+  padding: 4px 10px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.enguiXyp input[type=password] {
+  width: 100%;
+  padding: 4px 10px;
+  margin: 4px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.enguiXyp p {
+  margin: 0;
+}
+.loaderE {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background: rgba(200, 200, 200, 0.6);
+  margin: 0;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  border-radius: 5px;
+}
+.loaderIconE {
+  margin: auto;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  border-top: 6px solid #3498db;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 1s linear infinite; /* Safari */
+  animation: spin 1s linear infinite;
+}
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.groupE {
+  background: #ff9a36;
+  padding: 6px 16px;
+  margin-top: 4px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  user-select: none;
+  text-align: left;
+}
+.groupE:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+}
+.active:after {
+  content: "\2212";
+}
+.servicesE {
+  padding: 6px 16px;
+  display: none;
+}
+.servicesE input[type=checkbox] {
+  margin: 0 5px;
+}
+.totalPeeE {
+  text-align: center;
+  padding: 6px 0;
+  background: rgb(255, 255, 255);
+}
+.serParams {
+  display: none;
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EnguiXyp widget integration</title>
+    <!-- CSS файлаа оруулна -->
+    <link rel="stylesheet" href="EnguiXyp.css">
+  </head>
+  <body>
+    <!-- Энэхүү DIV элементийг харуулах хэсэгтээ оруулна. id="EnguiXyp" байх шаардлагатай -->
+    <div id="EnguiXyp"></div>
+    <!-- Үндсэн javascript файлаа орууна -->
+    <script src="EnguiXyp.min.js"></script>
+    <script>
+      // DOM элемент ачааллаж дууссаны дараах EVENT
+      window.addEventListener('load', async function() {
+        // токены хугацаа секундээр
+        var token_expire_time = 300;
+        // өөрийн backend-ээс 1 удаагын токен авах хүсэлт
+        const res = await fetch('http://localhost:3456/create/token', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            expire_time: token_expire_time,
+          })
+        })
+        const jsonData = await res.json()
+
+        
+        if (jsonData.code == 200) {
+          // токен амжилттай авсан тохиолдолд widget-ээ ачааллана
+          await enguiXyp.init({
+            expire_time: token_expire_time, // токены хугацаа секундээр
+            token: jsonData.result.token, // 1 удаагийн токен backend-ээс авна
+            timestamp: jsonData.result.timestamp, // timestamp backend-ээс авна
+            serviceJson: 'EnguiXyp.json', // сервис багцын файлын зам
+            message: '***-с мэдээлэл авах хүсэлт ирлээ', // GSign апп дээр харагдах мессеж
+            // та шаардлагатай параметрүүдээ дамжуулан автоматаар оролтуудаа бөглөх боломжтой
+            params: {
+              regnum: 'РЕ78787878',
+              phone: '99999999',
+              civilId: '111111111111',
+            },
+          })
+
+          // widget ачааллан батлах үйлдэл хийгдэхэд энэхүү хэсэгт хүсэлтийн хариу ирнэ
+          enguiXyp.onresponse((res) => {
+            console.log('onres', res)
+          })
+        } else {
+          console.log('cannot create a token, check your backend')
+        }
+      })
+    </script>
+  </body>
+</html>
