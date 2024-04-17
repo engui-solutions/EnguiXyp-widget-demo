@@ -12,7 +12,7 @@ const agent = new https.Agent({
   rejectUnauthorized: false,
 })
 
-const token = 'Bearer ' + "Байгууллагын токен";
+const token = 'Bearer ' + "890d51ef-08e5-11ee-b51d-00505683ac8a";
 
 app.use(cors());
 app.use(express.json());
@@ -26,6 +26,7 @@ app.post('/create/token', async (req, res) => {
         Authorization: token,
       }
     })
+    console.log(response.data)
     res.json(response.data)
   } catch (error) {
     console.error(error);
